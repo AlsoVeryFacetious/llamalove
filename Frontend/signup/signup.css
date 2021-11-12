@@ -1,12 +1,13 @@
 /* button*/
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #DA8841;
+#button{
+    position: absolute;
+    left: 40%; 
+    top: 40px;
+    width: 30%;
+    height: 30%;
+    background: #DADEE7;
 }
-a{
+#button{
     text-decoration: none;
     border: 3px solid yellow;
     color: transparent;
@@ -17,7 +18,7 @@ a{
     transition: all 0.5s;
     position: relative;
 }
-a:before{
+#button:before{
     content: "Sign Up";
     display: flex;
     justify-content: center;
@@ -36,12 +37,12 @@ a:before{
     transform: scale(0) rotatey(0);
     opacity: 0;
 }
-a:hover:before {
+#button:hover:before {
     transform: scale(1) skewY(360deg);
     left: 0;
     opacity: 1;
 }
-a:after {
+#button:after {
     content: "Sign Up";
     display: flex;
     justify-content: center;
@@ -60,7 +61,7 @@ a:after {
     transform: scale(1) skewY(0);
     opacity: 1;
 }
-a:hover:after {
+#button:hover:after {
     transform: scale(0) skewY(360deg);
     left: -100%;
     opacity: 0;
