@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="signup.css" rel="stylesheet">
-
-    <div id="header">
-        <!--
-            logo 
-            llamaluv 
-            slogan 
-            login 
-        --> 
-    </div>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 </head>
-    
-    <a id="button" href="https://tinder.com/">Sign Up</a>
-    <br><!--Sign up button-->
-    <h1>About</h1>
-    <br>
-<br>
+<body >
+    <div class="wrapper">
+        <div class="box1">
+            <a id="button" href="https://tinder.com/">Sign Up</a>
+        </div>
+        <div class="box2" id="about">------About------</div>
+        <div class="box3" id="features" onmouseenter="displayFeatures()" onmouseleave="displayFeaturesTitle()" >
+            Features
+        </div>
+        <div class="box4" id="missionStatement" onmouseenter="displayMission()" onmouseleave="displayMissionTitle()">
+            Our Mission
+        </div>
+        <div class="box5" id="devs" onmouseenter="displayDevs()" onmouseleave="displayDevsTitle()">
+            About the Dev's
+        </div>
+    </div>
+    <script src="signup.js"></script>
 </body>
-<footer>
-    <!--
-        privacy and connect 
-    -->
-    <div id="footer"></div>
+<footer class="footer">
+	<h6>
+		©2021-2022 LlamaLove | All Rights Reserved
+	</h6>
 </footer>
 </html>

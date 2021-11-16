@@ -1,15 +1,61 @@
-/* button*/
+/* start of grid*/
+body{
+    background-color: rgb(34, 34, 34);
+    color: yellow;
+}
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-auto-rows: minmax(100px,auto);
+    grid-gap: 1em;
+    
+
+}
+.wrapper > div{
+    background-color: yellow;
+    padding: 1m;
+}
+.box1{
+    grid-column: 1/7;
+    grid-row: 1/5;
+}
+.box2{
+    grid-column: 1/7;    
+    grid-row:6/5
+
+}
+.box3{
+    grid-column: 1/3;
+    grid-row:6/9;
+    background: url('https://cdn.dribbble.com/users/189524/screenshots/3915775/lama_sleeping_v1.gif') center center;
+    background-size: cover;
+}
+.box4{
+    grid-column: 3/5;
+    grid-row:6/9;
+    background: url('https://www.icegif.com/wp-content/uploads/llama-icegif.gif') center center;
+    background-size: cover;
+}
+.box5{
+    grid-column: 7/5;
+    grid-row:6/9;
+    background: url('https://i.pinimg.com/originals/d3/f2/14/d3f214aebcdd3a84f9991dfa9532a528.gif') center center;
+    background-size: cover;
+}
+/* end of grid */
+
+/* start of sign up button*/
 #button{
-    position: absolute;
+    position: flex;
     left: 40%; 
-    top: 40px;
+    top: 40%;
     width: 30%;
     height: 30%;
-    background: #DADEE7;
+    background: #e9e511;
 }
 #button{
     text-decoration: none;
-    border: 3px solid yellow;
+    border: 3px solid rgb(8, 8, 8);
     color: transparent;
     padding: 40px 80px;
     font-size: 28px;
@@ -66,4 +112,114 @@
     left: -100%;
     opacity: 0;
     }
-/*end of button*/
+/* end of sing up button*/
+
+/*Start of grid*/
+#about{
+    font-size: 70px;
+    font-family: "Sofia", sans-serif;
+    text-align: center;
+    background-color: yellow;
+    color:black;
+}
+#features{
+    font-size: 50px;
+    font-family: "Sofia", sans-serif;    
+    text-align: center;
+    color:black;
+
+}
+#missionStatement{
+    font-size: 50px;
+    font-family: "Sofia", sans-serif;
+    text-align: center;
+    color:black;
+}
+#devs{
+    font-size: 50px;
+    font-family: "Sofia", sans-serif;
+    text-align: center;
+    color:black;
+}
+/*end of grid*/
+
+/*start of grid hover*/
+#features:hover{
+    font-size: 100px;
+    box-shadow: 10px 10px 5px rgb(134, 132, 1);
+    background:rgb(113,32,229);
+}
+#missionStatement:hover{
+    font-size: 100px;
+    box-shadow: 10px 10px 5px rgb(134, 132, 1);
+    background:rgb(113,32,229);
+}
+#devs:hover{
+    font-size: 100px;
+    box-shadow: 10px 10px 5px rgb(134, 132, 1);
+    background:rgb(113,32,229);
+}
+/*end of grid hover*/
+
+/*start of footer*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+  *:focus {
+    outline: 0;
+}
+
+html {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+section {
+    background-color: #ffffff;
+    min-height: 100vh;
+    padding: 100px;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+}
+
+.margin-400 {
+    margin-bottom: 400px;
+}
+
+section img {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+section h2 {
+    font-size: 4em;
+}
+
+section p {
+    font-size: 1.2em;
+    margin: 1rem 0;
+}
+
+footer {
+    font-family: sans-serif;
+    align-items: center;
+    background-color: #262626;
+    bottom: 0;
+    color: #666666;
+    display: flex;
+    font-size: 5em;
+    height: 10%;
+    justify-content: center;
+    position:relative;
+    text-transform: uppercase;
+    width: 100%;
+    z-index: 1;
+}
+/*end of footer*/
