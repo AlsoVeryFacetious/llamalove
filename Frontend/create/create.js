@@ -107,6 +107,19 @@ var counter = 1;
             }, 500).css({
               'display': 'block'
             });
+
+            fetch("http://localhost:3000/create", {
+              method: "POST",
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                name: document.getElementById('name').value,
+                username: document.getElementById('uname').value,
+                password: document.getElementById('password').value
+            })
+            }).then(res => {
+              console.log("Request complete! response:", res);
+            });
+            console.log('yo');
           });
 
           $('#show-pwd').mousedown(function() {
