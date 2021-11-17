@@ -1,18 +1,16 @@
 /* start of grid*/
 body{
     background-color: rgb(34, 34, 34);
-    color: yellow;
+    color: rgb(133, 133, 133);
 }
 .wrapper{
     display: grid;
     grid-template-columns: repeat(6,1fr);
     grid-auto-rows: minmax(100px,auto);
     grid-gap: 1em;
-    
-
 }
 .wrapper > div{
-    background-color: yellow;
+    background-color: rgb(63, 63, 63);
     padding: 1m;
 }
 .box1{
@@ -119,7 +117,7 @@ body{
     font-size: 70px;
     font-family: "Sofia", sans-serif;
     text-align: center;
-    background-color: yellow;
+    background-color: rgb(56, 56, 56);
     color:black;
 }
 #features{
@@ -223,3 +221,53 @@ footer {
     z-index: 1;
 }
 /*end of footer*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+
+.logoHeader {
+width: 150px;
+height: 100px;
+
+}
+
+#pageHeader {
+display: inline-flex;
+text-decoration: none;
+}
+
+#navbarul {
+list-style-type: none;
+float: right;
+position: fixed;
+top: 0;
+width: 100%;
+text-align: right;
+}
+
+.linkli {
+float: left;
+}
+
+.linka {
+display: block;
+padding: 8px;
+text-decoration: none;
+font-family: 'Oswald', sans-serif;
+color: #313131;
+font-size: 20px;
+padding-top: 20px;
+}
+
+.linka a:active {
+    color: #ffc759;
+}
+
+.titleHeader {
+    text-align: center;
+    padding-right: 550px;
+    padding-left: 550px;
+    font-size: 35px;
+    padding-top: 20px;
+    font-family: 'Oswald', sans-serif;
+    color: #313131;
+}
