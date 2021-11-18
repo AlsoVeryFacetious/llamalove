@@ -33,6 +33,8 @@ exports.createUser = async (req, res) => {
 
 exports.getUsers = async (req, res) =>{
     const users = await models.User.find().lean();
+}
+
 exports.login = async (req, res) => {
     const userName = req.body.username;
     const password = req.body.password;
