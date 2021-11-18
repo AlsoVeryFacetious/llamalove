@@ -17,17 +17,16 @@ mongoose.connect(url,connectionParams)
 
 exports.createUser = async (req, res) => {
     console.log(req.body)
-    const user = new models.User(req.body);
     try{
-        await user.save();
-        res.send(user);
+        const user = await models.User.create(req.body);
         console.log('user saved :)');
+        res.send(user);
     } catch(err){
         console.log(err);
     }
 }
 
 exports.getUsers = async (req, res) =>{
-    const users = await models.User.find({});
+    const users = await models.User.find().lean();
     res.send(users);
 }
