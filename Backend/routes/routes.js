@@ -40,6 +40,26 @@ exports.createUser = async (req, res) => {
     }
 }
 
+exports.createQuestionnaire = async (req, res) => {
+    console.log(req.body);
+    const question = models.Questionnaire(req.body);
+    try{
+        const question = await models.Questionnaire.create(req.body);
+        console.log('questionnaire saved :)');
+        res.send(question);
+    } catch(err){
+        console.log(err);
+    }
+}
+
+exports.getUsers = async (req, res) =>{
+    const users = await models.User.find().lean();
+}
+
+exports.getQuestionnaire = async (req,res) => {
+    const question = await models.Questionnaire.find().lean();
+}
+
 exports.login = async (req, res) => {
     const userName = req.body.username;
     const password = req.body.password;
@@ -54,9 +74,4 @@ exports.login = async (req, res) => {
         console.log("logged in :)");
         res.json(user);
     }
-}
-
-exports.getUsers = async (req, res) => {
-    const users = await models.User.find({}).lean();
-    res.send(users);
 }
