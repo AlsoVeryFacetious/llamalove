@@ -23,7 +23,9 @@ const urlencodedParser = express.urlencoded({
 //app.get('/', routes.index);
 //app.get('/create', routes.create);
 app.get('/users', routes.getUsers);
+app.get('/questionnaire', routes.getQuestionnaire);
 app.post('/create', urlencodedParser, routes.createUser);
+app.post('/question', urlencodedParser, routes.createQuestionnaire);
 app.post('/login', urlencodedParser, routes.login);
 // app.get('/edit/:id', routes.edit);
 // app.post('/edit/:id', urlencodedParser, routes.editPerson);
