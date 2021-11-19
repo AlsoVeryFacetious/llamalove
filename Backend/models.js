@@ -20,6 +20,7 @@ const questionSchema = new mongoose.Schema({
     tvGenre: String,
     hobbies: String,
     travelDestination: String
+    
 });
 
 //doesnt work yet
