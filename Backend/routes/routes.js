@@ -61,8 +61,3 @@ exports.login = async (req, res) => {
         res.send("logged in :)");
     }
 }
-
-// exports.getUsers = async (req, res) => {
-//     const users = await models.User.find({}).lean();
-//     res.send(users);
-// }
