@@ -107,7 +107,8 @@ var counter = 1;
             }, 500).css({
               'display': 'block'
             });
-
+// Send data to database
+// ////////////////////////////////////////////////////////////////
             fetch("http://localhost:3000/create", {
               method: "POST",
               headers: {'Content-Type': 'application/json'},
@@ -118,10 +119,12 @@ var counter = 1;
             })
             }).then(res => {
               console.log("Request complete! response:", res);
+              if(res.status == 400){
+                console.log('username taken');
+              }
             });
-            console.log('yo');
           });
-
+// ///////////////////////////////////////////////////////////
           $('#show-pwd').mousedown(function() {
             $(this).toggleClass('view').toggleClass('hide');
             $('#password').css('opacity', 0);
