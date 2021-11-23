@@ -20,9 +20,9 @@ mongoose.connect(url,connectionParams)
 
 exports.createUser = async (req, res) => {
     let salt = bcrypt.genSaltSync(10);
-
     console.log(req.body)
-    if(models.User.findOne({username: req.body.username})){
+
+    if(await models.User.findOne({username: req.body.username})){
         console.log("Username taken");
         res.status(400).send("Username taken");
         return;
@@ -68,8 +68,7 @@ exports.login = async (req, res) => {
     console.log(user);
 
     if (bcrypt.compareSync(password, user.password)){
-        // get questionnaire doesnt work yet
-        const questionnaire = user.getQuestionnaire();
+        const questionnaire = await user.getQuestionnaire(user.username);
         console.log(questionnaire);
         console.log("logged in :)");
         res.json(user);

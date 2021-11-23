@@ -20,13 +20,11 @@ const questionSchema = new mongoose.Schema({
     tvGenre: String,
     hobbies: String,
     travelDestination: String
-    
 });
 
 //doesnt work yet
-userSchema.methods.getQuestionnaire = function(){
-    const questionnaire = mongoose.model("Questionnaire").find({username: this.username});
-    return questionnaire;
+userSchema.methods.getQuestionnaire = async function(userName){
+    return await mongoose.model("Questionnaire").findOne({username: userName});
 }
 
 exports.User = mongoose.model("User", userSchema);
