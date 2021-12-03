@@ -16,7 +16,9 @@ let fetchData = async (url) =>{
 }
 
 function displayData(data){
-    document.getElementsByClassName("name") = data.user.name;
-    document.getElementsByClassName("age") = data.user.age;
+    document.getElementById("name").innerHTML = data.user.name;
+    document.getElementById("age").innerHTML = data.questionnaire.age;
 }
+
+fetchData('http://localhost:3000/sendUser');
 

@@ -1,6 +1,7 @@
 const models = require('../models');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const expressSession = require('express-session');
 
 const url = `mongodb+srv://zsalabye:xmasgift12@llamacluster.ug7af.mongodb.net/LlamaDB?retryWrites=true&w=majority`;
 
@@ -33,7 +34,15 @@ exports.createUser = async (req, res) => {
     try{
         await user.save();
         await models.Questionnaire.create({username: user.username});
+        await models.Love.create({username: user.username});
+
         console.log('user saved :)');
+
+        req.session.user = {
+            isAuthenticated: true,
+            username: user.username
+        }
+
         res.send(user);
     } catch(err){
         console.log(err);
@@ -65,12 +74,59 @@ exports.login = async (req, res) => {
     const password = req.body.password;
 
     const user = await models.User.findOne({username: userName});
-    console.log(user);
 
     if (bcrypt.compareSync(password, user.password)){
-        const questionnaire = await user.getQuestionnaire(user.username);
-        console.log(questionnaire);
         console.log("logged in :)");
-        res.json(user);
+
+        req.session.user = {
+            isAuthenticated: true,
+            username: user.username
+        }
+        
+        const questionnaire = await user.getQuestionnaire(user.username);
+        let data = {user, questionnaire}
+        
+        console.log(data)
+        res.json(data);
+    }
+}
+
+exports.sendUser = async (req, res) => {
+    const user = await models.User.findOneRandom(async function(err, user) {
+        if (!err) {
+            console.log(user); // 1 element
+            questionnaire = await user.getQuestionnaire(user.username);
+            console.log(questionnaire);
+
+            const userInfo = {user, questionnaire};
+            res.json(userInfo);
+        }
+    })
+    console.log('done')
+}
+
+
+// Dont knwo if work
+exports.like = async (req, res) => {
+    // set like username in frontend
+    // check if match by comparing likes and see if match
+    console.log(req.session)
+    const curentUsername = req.session.user.username;
+    const likedUsername = req.body.username; // Set in frontend
+
+    const userLoves = await models.Love.findOne({username: curentUsername});
+    const likedUserLoves = await models.Love.findOne({username: likedUsername});
+
+    if(likedUserLoves.likes.indexOf(curentUsername) !== -1){
+        userLoves.matches.push(likedUsername);
+        likedUserLoves.matches.push(curentUsername);
+
+        await userLoves.save()
+        await likedUserLoves.save()
+        console.log('match');
+    } else{
+        userLoves.likes.push(likedUsername);
+        await userLoves.save();
+        console.log('like');
     }
 }
