@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:900i');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #DADDE7;
+}
+
+#bigboy {
+  background-color: chartreuse;
+  position:relative;
+  height: 400px;
+} 
+
+
+.wrapper, .wrapper1 {
+  /* float: none;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  transform: translatex(-50%);
+  text-transform: uppercase; */
+
+}
+
+#signupbtn {
+  /* top: 40%;
+  left: 50%;
+  text-transform: uppercase; */
+  justify-content: center;
+  align-items: center;
+
+}
+
+#loginbtn {
+  /* top: 60%;
+  left: 50%; */
+}
+
+button {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  background-color: inherit;
+  padding: 0;
+  border: none;
+}
+
+/* .wrapper1 {
+  float: none;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translatex(-50%);
+} */
+
+
+.cta, .cta1 {
+    display: flex;
+    padding: 10px 45px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    color: white;
+    background: #8391AF;
+    transition: 1s;
+    box-shadow: 6px 6px 0 #696969;
+    transform: skewX(-15deg);
+}
+
+
+.cta:focus {
+  outline: none; 
+}
+
+.cta1:focus {
+  outline: none; 
+}
+
+.cta:hover {
+    transition: 0.5s;
+    box-shadow: 10px 10px 0 #FFADC2;
+}
+
+.cta1:hover {
+  transition: 0.5s;
+  box-shadow: 10px 10px 0 #FFADC2;
+}
+
+.cta span:nth-child(2) {
+    transition: 0.5s;
+    margin-right: 0px;
+}
+
+.cta1 span:nth-child(2) {
+  transition: 0.5s;
+  margin-right: 0px;
+}
+
+.cta:hover  span:nth-child(2) {
+    transition: 0.5s;
+    margin-right: 45px;
+}
+
+.cta1:hover  span:nth-child(2) {
+  transition: 0.5s;
+  margin-right: 45px;
+}
+
+
+  span {
+    transform: skewX(15deg) 
+  }
+
+  span:nth-child(2) {
+    width: 20px;
+    margin-left: 30px;
+    position: relative;
+    top: 12%;
+  }
+  
+/**************SVG****************/
+
+path.one {
+    transition: 0.4s;
+    transform: translateX(-60%);
+}
+
+path.two {
+    transition: 0.5s;
+    transform: translateX(-30%);
+}
+
+.cta:hover path.three {
+    animation: color_anim 1s infinite 0.2s;
+}
+
+.cta1:hover path.three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+
+.cta:hover path.one {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.6s;
+}
+
+.cta1:hover path.one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.cta:hover path.two {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.4s;
+}
+
+.cta1:hover path.two{
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+/* SVG animations */
+
+@keyframes color_anim {
+    0% {
+        fill: white;
+    }
+    50% {
+        fill: #FFADC2;
+    }
+    100% {
+        fill: white;
+    }
+}
+

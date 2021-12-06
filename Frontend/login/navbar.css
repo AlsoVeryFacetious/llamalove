@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap'); */
+
+.topnav {
+  position: relative;
+  overflow: hidden;
+}
+
+.topnav a {
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Oswald', sans-serif;
+  text-decoration: none;
+  font-size: 22px;
+  margin-right: 10px;
+}
+
+.topnav-right {
+  top: 25%;
+  left: 50%;
+  float: right;
+  margin-top: 50px;
+}
+
+.topnav a:hover {
+  color:#FFC759;
+}
+
+.topnav-centeredTitle {
+  float: none;
+  position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+  font-family: 'Sacramento', sans-serif;
+  font-size: 60px;
+  color: #fff;
+  padding-top: 50px;
+  margin-bottom: 100px;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  float: left;
+}
