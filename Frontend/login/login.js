@@ -141,7 +141,7 @@ function submit() {
       })
       }).then(res => {
         console.log("Request complete! response:", res);
-        sessionStorage.setItem('username', document.getElementById('username').value)
+        sessionStorage.setItem('username', document.getElementById('username').value);
         window.location.replace("../home/tilt.html");
       });
       // ///////////////////////////////////////////////////////////
