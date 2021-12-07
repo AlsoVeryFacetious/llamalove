@@ -147,7 +147,7 @@ var counter = 1;
                 console.log('username taken');
               } else{
                 console.log("Request complete! response:", res);
-                // sessionStorage.setItem('username', document.getElementById('uname').value)
+                sessionStorage.setItem('username', document.getElementById('uname').value)
                 window.location.replace("../questions/questions.html");
               }
             });

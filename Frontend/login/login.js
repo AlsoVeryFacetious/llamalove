@@ -130,7 +130,7 @@ function submit() {
       }, 500).css({
         'display': 'block'
       });
-            // Send data to database
+      // Send data to database
       // ////////////////////////////////////////////////////////////////
       fetch("http://localhost:3000/login", {
         method: "POST",
@@ -140,7 +140,9 @@ function submit() {
           password: document.getElementById('password').value
       })
       }).then(res => {
-          console.log("Request complete! response:", res);
+        console.log("Request complete! response:", res);
+        sessionStorage.setItem('username', document.getElementById('username').value)
+        window.location.replace("../home/tilt.html");
       });
       // ///////////////////////////////////////////////////////////
     });
