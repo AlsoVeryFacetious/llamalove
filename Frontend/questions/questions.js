@@ -19,5 +19,6 @@ function submitQuestionnaire() {
       })
       }).then(res => {
         console.log("Request complete! response:", res);
+        window.location.replace("../home/tilt.html");
       });
 }
