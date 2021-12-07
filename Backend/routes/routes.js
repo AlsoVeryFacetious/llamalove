@@ -33,7 +33,6 @@ exports.createUser = async (req, res) => {
 
     try{
         await user.save();
-        await models.Questionnaire.create({username: user.username});
         await models.Love.create({username: user.username});
 
         console.log('user saved :)');
@@ -42,6 +41,7 @@ exports.createUser = async (req, res) => {
             isAuthenticated: true,
             username: user.username
         }
+        console.log('yo');
 
         res.send(user);
     } catch(err){

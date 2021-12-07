@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
 const questionSchema = new mongoose.Schema({
     username: String,
     age: Number,
-    gender: String,
+    pronouns: String,
     sexInterest: String,
     sign: String,
     degree: String,
