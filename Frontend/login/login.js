@@ -130,6 +130,19 @@ function submit() {
       }, 500).css({
         'display': 'block'
       });
+            // Send data to database
+      // ////////////////////////////////////////////////////////////////
+      fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          username: document.getElementById('username').value,
+          password: document.getElementById('password').value
+      })
+      }).then(res => {
+          console.log("Request complete! response:", res);
+      });
+      // ///////////////////////////////////////////////////////////
     });
   
     $('#show-pwd').mousedown(function() {
