@@ -111,8 +111,8 @@ exports.like = async (req, res) => {
     // set like username in frontend
     // check if match by comparing likes and see if match
     console.log(req.session)
-    const curentUsername = req.session.user.username;
-    const likedUsername = req.body.username; // Set in frontend
+    const curentUsername = req.body.currentUser;
+    const likedUsername = req.body.likedUser; // Set in frontend
 
     const userLoves = await models.Love.findOne({username: curentUsername});
     const likedUserLoves = await models.Love.findOne({username: likedUsername});
