@@ -143,9 +143,12 @@ var counter = 1;
                 password: document.getElementById('password').value
             })
             }).then(res => {
-              console.log("Request complete! response:", res);
               if(res.status == 400){
                 console.log('username taken');
+              } else{
+                console.log("Request complete! response:", res);
+                // sessionStorage.setItem('username', document.getElementById('uname').value)
+                window.location.replace("../questions/questions.html");
               }
             });
           });

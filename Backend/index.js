@@ -14,7 +14,7 @@ app.use(expressSession ({
     secret: 'wh4t3v3r',
     saveUninitialized: true,
     resave: true
-}))
+}));
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
