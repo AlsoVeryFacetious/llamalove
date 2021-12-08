@@ -130,6 +130,22 @@ function submit() {
       }, 500).css({
         'display': 'block'
       });
+      // Send data to database
+      // ////////////////////////////////////////////////////////////////
+      fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        credentials: 'include',
+        body: JSON.stringify({
+          username: document.getElementById('username').value,
+          password: document.getElementById('password').value
+      })
+      }).then(res => {
+        console.log("Request complete! response:", res);
+        //sessionStorage.setItem('username', document.getElementById('username').value);
+        window.location.replace("../home/tilt.html");
+      });
+      // ///////////////////////////////////////////////////////////
     });
   
     $('#show-pwd').mousedown(function() {

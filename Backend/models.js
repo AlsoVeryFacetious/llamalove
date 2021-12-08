@@ -15,7 +15,7 @@ var imgPath = '..\\Esther_main_image_1.jpg'
 const questionSchema = new mongoose.Schema({
     username: String,
     age: Number,
-    gender: String,
+    pronouns: String,
     sexInterest: String,
     sign: String,
     degree: String,
