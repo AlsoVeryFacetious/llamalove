@@ -137,6 +137,7 @@ var counter = 1;
             fetch("http://localhost:3000/create", {
               method: "POST",
               headers: {'Content-Type': 'application/json'},
+              credentials: 'include',
               body: JSON.stringify({
                 name: document.getElementById('name').value,
                 username: document.getElementById('uname').value,

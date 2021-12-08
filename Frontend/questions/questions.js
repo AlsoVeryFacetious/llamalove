@@ -3,6 +3,7 @@ function submitQuestionnaire() {
       fetch("http://localhost:3000/question", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
+        credentials: 'include',
         body: JSON.stringify({
           username: sessionStorage.getItem('username'),
           age: document.getElementById('age').value,

@@ -41,7 +41,6 @@ exports.createUser = async (req, res) => {
             isAuthenticated: true,
             username: user.username
         }
-        console.log('yo');
 
         res.send(user);
     } catch(err){
@@ -51,11 +50,14 @@ exports.createUser = async (req, res) => {
 
 exports.createQuestionnaire = async (req, res) => {
     console.log(req.body);
-    const question = models.Questionnaire(req.body);
     try{
         const question = await models.Questionnaire.create(req.body);
         console.log('questionnaire saved :)');
-        res.send(question);
+        req.session.user = {
+            isAuthenticated: true,
+            username: question.username
+        }
+        res.send()
     } catch(err){
         console.log(err);
     }
@@ -83,20 +85,23 @@ exports.login = async (req, res) => {
             username: user.username
         }
         
+        console.log(req.session)
         const questionnaire = await user.getQuestionnaire(user.username);
         let data = {user, questionnaire}
         
-        console.log(data)
-        res.json(data);
+        // console.log(data)
+        res.send(data);
     }
 }
 
 exports.sendUser = async (req, res) => {
-    const user = await models.User.findOneRandom(async function(err, user) {
+    console.log(req.session)
+    var filter = { username: { $ne: req.session.user.username} };
+    const user = await models.User.findOneRandom(filter, async function(err, user) {
         if (!err) {
             console.log(user); // 1 element
             questionnaire = await user.getQuestionnaire(user.username);
-            console.log(questionnaire);
+            // console.log(questionnaire);
 
             const userInfo = {user, questionnaire};
             res.json(userInfo);
@@ -106,20 +111,22 @@ exports.sendUser = async (req, res) => {
 }
 
 
-// Dont knwo if work
+
 exports.like = async (req, res) => {
     // set like username in frontend
     // check if match by comparing likes and see if match
     console.log(req.session)
-    const curentUsername = req.body.currentUser;
+    const curentUsername = req.session.user.username;
     const likedUsername = req.body.likedUser; // Set in frontend
 
     const userLoves = await models.Love.findOne({username: curentUsername});
     const likedUserLoves = await models.Love.findOne({username: likedUsername});
 
     if(likedUserLoves.likes.indexOf(curentUsername) !== -1){
+        likedUserLoves.likes.splice(likedUserLoves.likes.indexOf(curentUsername), 1);
         userLoves.matches.push(likedUsername);
         likedUserLoves.matches.push(curentUsername);
+
 
         await userLoves.save()
         await likedUserLoves.save()
@@ -129,4 +136,11 @@ exports.like = async (req, res) => {
         await userLoves.save();
         console.log('like');
     }
+}
+
+exports.getMatches = async (req, res) => {
+    const userName = req.session.user.username;
+    const loves = await models.Love.findOne({username: userName});
+
+    res.json(loves.matches);
 }
