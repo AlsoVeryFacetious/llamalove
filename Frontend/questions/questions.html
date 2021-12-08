@@ -13,8 +13,7 @@
         </div>
         <img class="logo" src="..\shit\white-logo.png">
         <div class="topnav-right">
-            <a href="">Home</a>
-            <a href="#">Log In</a>
+            <a href="..\home\tilt.html">Home</a>
         </div>
     </div>
 </header>
@@ -181,14 +180,23 @@
                         <input type="radio" id="southAmerica" name="travel" value="southAmerica">South America
                     </div>
                 </fieldset>
+                
                 </div> <!-- FORM 2 ENDING-->
             </div>
                 <div id="form3"> <!-- FORM 3 STARTING-->
+                    <fieldset id="fieldset1">
+                        <div class="image" class="label-header">
+                            Upload profile picture
+                        </div>
+                        <input type='file' id='image_input' accept="image/jpeg" />
+                        
+                        </fieldset>
                 <fieldset>
-                    <button id="submit" type="submit" class="btn">Submit!</button>
+                    <button id="submit" type="button" class="btn" onclick='submitQuestionnaire()'>Submit!</button>
                 </fieldset>
             </div>
             </form>
     </main>
+    <script  src="./questions.js"></script>
 </body>
 </html>

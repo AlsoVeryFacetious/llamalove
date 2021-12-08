@@ -5,6 +5,50 @@
 body {
   background-color: #ffd583;
 }
+#image_input {
+  margin-left: 90px;
+  margin-top: 10px;
+}
+
+/* 
+input[type="file"] {
+  display: none;
+}
+
+
+
+#image_input {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+
+#fieldset1 label {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 3px;
+  padding: 0 15px;
+  margin-top: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 4px;
+  color: #000;
+  background: transparent;
+  line-height: 1.15;
+  font-size: 14px;
+  height: 20px;
+  word-spacing: 0px;
+  letter-spacing: 0.0892857143em;
+  text-decoration: none;
+  text-transform: uppercase;
+  min-width: 64px;
+  border: 1px solid #000;
+  text-align: center;
+  transition: background 280ms cubic-be;
+} */
 
 .topnav {
   background-color: black;

@@ -137,15 +137,19 @@ var counter = 1;
             fetch("http://localhost:3000/create", {
               method: "POST",
               headers: {'Content-Type': 'application/json'},
+              credentials: 'include',
               body: JSON.stringify({
                 name: document.getElementById('name').value,
                 username: document.getElementById('uname').value,
                 password: document.getElementById('password').value
             })
             }).then(res => {
-              console.log("Request complete! response:", res);
               if(res.status == 400){
                 console.log('username taken');
+              } else{
+                console.log("Request complete! response:", res);
+                sessionStorage.setItem('username', document.getElementById('uname').value)
+                window.location.replace("../questions/questions.html");
               }
             });
           });
