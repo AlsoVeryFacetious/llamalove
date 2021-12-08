@@ -8,6 +8,10 @@ const userSchema = new mongoose.Schema({
     password: String
 });
 
+var imgPath = '..\\Esther_main_image_1.jpg'
+
+
+
 const questionSchema = new mongoose.Schema({
     username: String,
     age: Number,
@@ -20,8 +24,16 @@ const questionSchema = new mongoose.Schema({
     gameGenre: String,
     tvGenre: String,
     hobbies: String,
-    travelDestination: String
+    travelDestination: String,
+    image:{
+        data: Buffer,
+        contentType: String
+    }
 });
+
+//questionSchema.image.data = fx.readFileSync(imgPath);
+//questionSchema.image.contentType = 'image/jpg';
+
 
 const loveSchema = new mongoose.Schema({
     username: String,

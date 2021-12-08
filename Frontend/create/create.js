@@ -24,7 +24,6 @@ function getValues() {
 
 
 var counter = 1;
-<<<<<<< HEAD
 $(document).ready(function() {
 
   var erroEle = $('.error-message'),
@@ -207,7 +206,6 @@ function getValues() {
   console.log("Password: " + password);
 
 }
-=======
         $(document).ready(function() {
 
           var erroEle = $('.error-message'),
@@ -384,4 +382,4 @@ function getValues() {
             opacity: opaci
           }).html(appendString)
         }
->>>>>>> 44810f072f31c22889e1f1734ebdcf34d69875c0
+
