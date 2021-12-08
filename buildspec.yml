@@ -8,4 +8,4 @@ artifacts:
   files:
     - '**/*'
   discard-paths: no
-  base-directory: ./
+  base-directory: ./Backend
