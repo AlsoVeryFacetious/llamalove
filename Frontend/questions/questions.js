@@ -1,4 +1,6 @@
 function submitQuestionnaire() {
+  const fd = new FormData(form);
+  console.log(fd);
   console.log(sessionStorage.getItem('username'));
       fetch("http://localhost:3000/question", {
         method: "POST",
@@ -23,3 +25,16 @@ function submitQuestionnaire() {
         window.location.replace("../home/tilt.html");
       });
 }
+// window.addEventListener('load', function(){
+//   const form = document.getElementById('survey-form');
+
+//   function sendData(){
+//     const fd = formData(form);
+//   }
+//   form.addEventListener('submit', evt =>{
+//     evt.preventDfault();
+//     sendData();
+//   })
+// })
+
+document.getElementById('survey-form')
