@@ -10,6 +10,13 @@ let displayedUsername = '';
 //     displayedUsername = data.user.username;
 //     displayData(data);
 // }
+
+let arrayBufferToBase64 = (buffer) => {
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    return window.btoa(binary);
+};
 let fetchData = () => {
     fetch("http://localhost:3000/sendUser", {
         method: "GET",
@@ -18,7 +25,15 @@ let fetchData = () => {
         .then(data => {
             // console.log(data);
             displayedUsername = data.user.username;
-            displayData(data);
+            let imgString = '';
+            try{
+                imgString = arrayBufferToBase64(data.questionnaire.image.data.data);
+                imgString = `data:image/jpg;base64,${imgString}`
+            } catch{
+                imgString = "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80";
+            }
+            // console.log(imgString);
+            displayData(data, imgString);
         });
 }
 
@@ -40,7 +55,7 @@ let displayMatches = data => {
     }
 }
 
-function displayData(data) {
+function displayData(data, imgString) {
     document.getElementById("name").innerHTML = data.user.name;
     document.getElementById("age").innerHTML = data.questionnaire.age;
     document.getElementById("cohort").innerHTML = data.questionnaire.cohort;
@@ -51,6 +66,7 @@ function displayData(data) {
     document.getElementById("game").innerHTML = data.questionnaire.gameGenre;
     document.getElementById("hobby").innerHTML = data.questionnaire.hobbies;
     document.getElementById("travel").innerHTML = data.questionnaire.travelDestination;
+    document.getElementById('image').innerHTML = `<img src="${imgString}" width="650px" height="400px" alt="test">`
 }
 
 function like() {

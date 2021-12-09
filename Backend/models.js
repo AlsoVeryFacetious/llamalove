@@ -24,13 +24,10 @@ const questionSchema = new mongoose.Schema({
     travelDestination: String,
     image:{
         data: Buffer,
-        contentType: String
+        contentType: String,
+        path: String
     }
 });
-
-//questionSchema.image.data = fx.readFileSync(imgPath);
-//questionSchema.image.contentType = 'image/jpg';
-
 
 const loveSchema = new mongoose.Schema({
     username: String,
