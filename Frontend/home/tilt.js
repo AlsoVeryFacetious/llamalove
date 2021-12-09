@@ -16,7 +16,7 @@ let fetchData = () => {
         credentials: 'include'
     }).then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             displayedUsername = data.user.username;
             displayData(data);
         });
@@ -28,7 +28,7 @@ let fetchMatches = () => {
         credentials: 'include'
     }).then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             displayMatches(data);
         });
 }

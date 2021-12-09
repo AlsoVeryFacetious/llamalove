@@ -12,7 +12,7 @@ const questionSchema = new mongoose.Schema({
     username: String,
     age: Number,
     pronouns: String,
-    sexInterest: String,
+    attracted: String,
     sign: String,
     degree: String,
     cohort: Number,

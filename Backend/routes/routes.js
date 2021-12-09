@@ -50,8 +50,12 @@ exports.createUser = async (req, res) => {
 
 exports.createQuestionnaire = async (req, res) => {
     console.log(req.body);
+    const question = models.Questionnaire(req.body);
+    question.username = req.session.user.username;
+    console.log(question)
     try{
-        const question = await models.Questionnaire.create(req.body);
+        // const question = await models.Questionnaire.create(req.body);
+        await question.save()
         console.log('questionnaire saved :)');
         req.session.user = {
             isAuthenticated: true,
@@ -127,14 +131,15 @@ exports.like = async (req, res) => {
         userLoves.matches.push(likedUsername);
         likedUserLoves.matches.push(curentUsername);
 
-
         await userLoves.save()
         await likedUserLoves.save()
         console.log('match');
+        res.send('match');
     } else{
         userLoves.likes.push(likedUsername);
         await userLoves.save();
         console.log('like');
+        res.send('like');
     }
 }
 
