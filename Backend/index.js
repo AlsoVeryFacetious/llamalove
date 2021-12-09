@@ -85,7 +85,7 @@ const urlencodedParser = express.urlencoded({
 app.get('/users', routes.getUsers);
 app.get('/questionnaire', routes.getQuestionnaire);
 app.post('/create', urlencodedParser, routes.createUser);
-app.post('/question', middleware, urlencodedParser, routes.createQuestionnaire);
+app.post('/question', upload.single('image'), urlencodedParser, routes.createQuestionnaire);
 app.post('/login', urlencodedParser, routes.login);
 app.get('/sendUser', checkAuth, routes.sendUser);
 app.get('/matches', checkAuth, routes.getMatches);
