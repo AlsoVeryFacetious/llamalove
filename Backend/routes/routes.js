@@ -24,12 +24,7 @@ mongoose.connect(url,connectionParams)
 exports.createUser = async (req, res) => {
     let salt = bcrypt.genSaltSync(10);
     console.log(req.body)
-
-    if(await models.User.findOne({username: req.body.username})){
-        console.log("Username taken");
-        res.status(400).send("Username taken");
-        return;
-    }
+    
     const user = models.User(req.body);
     user.password = bcrypt.hashSync(user.password, salt);
 
@@ -155,6 +150,17 @@ exports.like = async (req, res) => {
 // exports.getImage = (req, res) =>{
 //     res.sendFile(path.join(__dirname, './uploads/' + req.params.filename));
 // }
+
+exports.checkUsername = async (req, res) => {
+    let userName = req.params.username;
+
+    if(await models.User.findOne({username: userName})){
+        console.log("Username taken");
+        res.status(400).send('Username taken');
+    } else{
+        res.send();
+    }
+}
 
 exports.getMatches = async (req, res) => {
     const userName = req.session.user.username;
