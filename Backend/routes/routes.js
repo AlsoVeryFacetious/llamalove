@@ -56,10 +56,10 @@ exports.createQuestionnaire = async (req, res) => {
     question.username = req.session.user.username;
     // console.log(question)
     // console.log(req.file);
-    
+
     question.image.data = fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename));
     question.image.contentType = 'image/jpg';
-    question.image.path = path.join(__dirname + '/uploads/' + req.file.filename)
+    // question.image.file = req.file.filename
     try{
         // const question = await models.Questionnaire.create(req.body);
         await question.save()
@@ -111,9 +111,11 @@ exports.sendUser = async (req, res) => {
     const user = await models.User.findOneRandom(filter, async function(err, user) {
         if (!err) {
             console.log(user); // 1 element
-            questionnaire = await user.getQuestionnaire(user.username);
+            //let questionnaire = await models.Questionnaire.findOne({username: user.username},'-image.data');
+            let questionnaire = await user.getQuestionnaire(user.username);
             // console.log(questionnaire);
-
+            // if(questionnaire.image.path === undefined){
+            // }
             const userInfo = {user, questionnaire};
             res.json(userInfo);
         }
@@ -150,9 +152,22 @@ exports.like = async (req, res) => {
     }
 }
 
+// exports.getImage = (req, res) =>{
+//     res.sendFile(path.join(__dirname, './uploads/' + req.params.filename));
+// }
+
 exports.getMatches = async (req, res) => {
     const userName = req.session.user.username;
-    const loves = await models.Love.findOne({username: userName});
+    const matches = await models.Love.findOne({username: userName}, 'matches -_id');
+    console.log(matches.matches);
+    let data = []
+    for (i in matches.matches){
+        let name = await models.User.findOne({username: matches.matches[i]}, 'name -_id'); 
+        let image = await models.Questionnaire.findOne({username: matches.matches[i]}, 'image -_id');
+        let match = {name, image}
+        data.push(match);
+    }
 
-    res.json(loves.matches);
+    console.log(data);
+    res.json(data);
 }

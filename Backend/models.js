@@ -24,7 +24,7 @@ const questionSchema = new mongoose.Schema({
     image:{
         data: Buffer,
         contentType: String,
-        path: String
+        // path: String
     }
 });
 
