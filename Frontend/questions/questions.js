@@ -16,7 +16,8 @@ function submitQuestionnaire() {
           gameGenre: document.querySelector('input[name="game"]:checked').value,
           tvGenre: document.querySelector('input[name="show"]:checked').value,
           hobbies: document.getElementById('hobby-dropdown').value,
-          travelDestination: document.querySelector('input[name="travel"]:checked').value
+          travelDestination: document.querySelector('input[name="travel"]:checked').value,
+          image: "hello"
       })
       }).then(res => {
         console.log("Request complete! response:", res);

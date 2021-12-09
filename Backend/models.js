@@ -2,15 +2,12 @@ const mongoose = require('mongoose');
 const internal = require('stream');
 var random = require('mongoose-simple-random');
 
+
 const userSchema = new mongoose.Schema({
     name: String,
     username: String,
     password: String
 });
-
-var imgPath = '..\\Esther_main_image_1.jpg'
-
-
 
 const questionSchema = new mongoose.Schema({
     username: String,

@@ -2,6 +2,8 @@ const models = require('../models');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const expressSession = require('express-session');
+var fs = require('fs');
+var path = require('path');
 
 const url = `mongodb+srv://zsalabye:xmasgift12@llamacluster.ug7af.mongodb.net/LlamaDB?retryWrites=true&w=majority`;
 
@@ -17,6 +19,7 @@ mongoose.connect(url,connectionParams)
     .catch( (err) => {
         console.error(`Error connecting to the database. \n${err}`);
     });
+    
     
 
 exports.createUser = async (req, res) => {
@@ -50,8 +53,15 @@ exports.createUser = async (req, res) => {
 
 exports.createQuestionnaire = async (req, res) => {
     console.log(req.body);
+    console.log(req.file);
+    console.log(req.file.filename);
+    const question = models.Questionnaire.create(req.body);
+    question.image = {
+        data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+        contentType: 'image/jpg'
+    }
     try{
-        const question = await models.Questionnaire.create(req.body);
+        question.save();
         console.log('questionnaire saved :)');
         req.session.user = {
             isAuthenticated: true,

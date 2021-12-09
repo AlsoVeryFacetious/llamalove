@@ -3,13 +3,43 @@ const path = require('path');
 const routes = require('./routes/routes');
 const expressSession = require('express-session');
 const { url } = require('inspector');
-// var router = express.Router();
-// var multer = require('multer');
-// var fs = require("fs");
-// var upload = multer({ dest: 'uploads/' })
-// var Image = require('../models/image');
-// var storage = multer.memoryStorage()
-// var upload = multer({ storage: storage })
+var multer = require('multer');
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.filename)
+    }
+});
+
+var upload = multer({ storage: storage });
+
+function middleware(req, res, next) {
+    var imageName;
+
+    var uploadStorage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, './uploads');
+        },
+        filename: function (req, file, cb) {
+            imageName = file.originalname;
+            //imageName += "_randomstring"
+            cb(null, imageName);
+        }
+    });
+
+    var uploader = multer({storage: uploadStorage});
+
+    var uploadFile = upload.single('image');
+
+    uploadFile(req, res, function (err) {
+        req.imageName = imageName;
+        req.uploadError = err;
+        next();
+    })
+}
+
 
 const app = express();
 
@@ -38,24 +68,6 @@ app.use((req, res, next) => {
 });
 
 
-// GET for image form
-// router.get("/questionnaire", function(req, res, next) {
-//     res.render("create_image", {title: "Create Image"});
-// });
-
-// // Uploading image to mongoDB Atlas
-// router.post("/image/create", upload.single("image"), function(req, res, next) {
-//     var image = new Image({
-//         name: req.body.image_name
-//     });
-//     image.img.data = fs.readFileSync(req.file.path);
-//     image.img.contentType = "image/jpg";
-//     image.save(function(err) {
-//         if (err) { return next(err); }
-//         res.redirect("/");
-//     });
-// });
-
 
 const checkAuth = (req, res, next) => {
     if(req.session.user && req.session.user.isAuthenticated) {
@@ -69,19 +81,14 @@ const urlencodedParser = express.urlencoded({
     extended: false
 });
 
-//app.get('/', routes.index);
-//app.get('/create', routes.create);
+
 app.get('/users', routes.getUsers);
 app.get('/questionnaire', routes.getQuestionnaire);
 app.post('/create', urlencodedParser, routes.createUser);
-app.post('/question', urlencodedParser, routes.createQuestionnaire);
+app.post('/question', middleware, urlencodedParser, routes.createQuestionnaire);
 app.post('/login', urlencodedParser, routes.login);
 app.get('/sendUser', checkAuth, routes.sendUser);
 app.get('/matches', checkAuth, routes.getMatches);
 app.post('/like', checkAuth, urlencodedParser, routes.like);
-// app.get('/edit/:id', routes.edit);
-// app.post('/edit/:id', urlencodedParser, routes.editPerson);
-//app.get('/delete/:id', routes.delete);
-// app.get('/details/:id', routes.details);
 
 app.listen(3000);
