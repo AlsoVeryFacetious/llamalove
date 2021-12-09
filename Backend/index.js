@@ -85,3 +85,4 @@ app.post('/like', checkAuth, urlencodedParser, routes.like);
 // app.get('/details/:id', routes.details);
 
 app.listen(3000);
+// app.listen(process.env.PORT || 3000);
