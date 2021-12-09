@@ -3,6 +3,13 @@ const path = require('path');
 const routes = require('./routes/routes');
 const expressSession = require('express-session');
 const { url } = require('inspector');
+// var router = express.Router();
+// var multer = require('multer');
+// var fs = require("fs");
+// var upload = multer({ dest: 'uploads/' })
+// var Image = require('../models/image');
+// var storage = multer.memoryStorage()
+// var upload = multer({ storage: storage })
 
 const app = express();
 
@@ -29,6 +36,26 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     next();
 });
+
+
+// GET for image form
+// router.get("/questionnaire", function(req, res, next) {
+//     res.render("create_image", {title: "Create Image"});
+// });
+
+// // Uploading image to mongoDB Atlas
+// router.post("/image/create", upload.single("image"), function(req, res, next) {
+//     var image = new Image({
+//         name: req.body.image_name
+//     });
+//     image.img.data = fs.readFileSync(req.file.path);
+//     image.img.contentType = "image/jpg";
+//     image.save(function(err) {
+//         if (err) { return next(err); }
+//         res.redirect("/");
+//     });
+// });
+
 
 const checkAuth = (req, res, next) => {
     if(req.session.user && req.session.user.isAuthenticated) {
@@ -58,3 +85,4 @@ app.post('/like', checkAuth, urlencodedParser, routes.like);
 // app.get('/details/:id', routes.details);
 
 app.listen(3000);
+// app.listen(process.env.PORT || 3000);
