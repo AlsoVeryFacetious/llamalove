@@ -2,6 +2,8 @@ const models = require('../models');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const expressSession = require('express-session');
+const fs = require('fs');
+const path = require('path');
 
 const url = `mongodb+srv://zsalabye:xmasgift12@llamacluster.ug7af.mongodb.net/LlamaDB?retryWrites=true&w=majority`;
 
@@ -18,16 +20,12 @@ mongoose.connect(url,connectionParams)
         console.error(`Error connecting to the database. \n${err}`);
     });
     
+    
 
 exports.createUser = async (req, res) => {
     let salt = bcrypt.genSaltSync(10);
     console.log(req.body)
 
-    if(await models.User.findOne({username: req.body.username})){
-        console.log("Username taken");
-        res.status(400).send("Username taken");
-        return;
-    }
     const user = models.User(req.body);
     user.password = bcrypt.hashSync(user.password, salt);
 
@@ -50,14 +48,26 @@ exports.createUser = async (req, res) => {
 
 exports.createQuestionnaire = async (req, res) => {
     console.log(req.body);
+
+    console.log(req.file);
+    console.log(req.file.filename);
+    const question = models.Questionnaire.create(req.body);
+    question.username = req.session.user.username;
+    // console.log(question)
+    // console.log(req.file);
+
+    question.image.data = fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename));
+    question.image.contentType = 'image/jpg';
+    // question.image.file = req.file.filename
     try{
-        const question = await models.Questionnaire.create(req.body);
+        // const question = await models.Questionnaire.create(req.body);
+        await question.save()
         console.log('questionnaire saved :)');
         req.session.user = {
             isAuthenticated: true,
             username: question.username
         }
-        res.send()
+        res.redirect('http://localhost:8080/home/tilt.html')
     } catch(err){
         console.log(err);
     }
@@ -100,9 +110,11 @@ exports.sendUser = async (req, res) => {
     const user = await models.User.findOneRandom(filter, async function(err, user) {
         if (!err) {
             console.log(user); // 1 element
-            questionnaire = await user.getQuestionnaire(user.username);
+            //let questionnaire = await models.Questionnaire.findOne({username: user.username},'-image.data');
+            let questionnaire = await user.getQuestionnaire(user.username);
             // console.log(questionnaire);
-
+            // if(questionnaire.image.path === undefined){
+            // }
             const userInfo = {user, questionnaire};
             res.json(userInfo);
         }
@@ -127,20 +139,50 @@ exports.like = async (req, res) => {
         userLoves.matches.push(likedUsername);
         likedUserLoves.matches.push(curentUsername);
 
-
         await userLoves.save()
         await likedUserLoves.save()
         console.log('match');
+        res.send('match');
     } else{
         userLoves.likes.push(likedUsername);
         await userLoves.save();
         console.log('like');
+        res.send('like');
     }
+}
+
+// exports.getImage = (req, res) =>{
+//     res.sendFile(path.join(__dirname, './uploads/' + req.params.filename));
+// }
+
+exports.checkUsername = async (req, res) => {
+    let userName = req.params.username;
+
+    if(await models.User.findOne({username: userName})){
+        console.log("Username taken");
+        res.status(400).send('Username taken');
+    } else{
+        res.send();
+    }
+}
+
+exports.getProfilePicture = async (req, res) => {
+    let image = await models.Questionnaire.findOne({username: req.session.user.username}, 'image -_id');
+    res.json(image);
 }
 
 exports.getMatches = async (req, res) => {
     const userName = req.session.user.username;
-    const loves = await models.Love.findOne({username: userName});
+    const matches = await models.Love.findOne({username: userName}, 'matches -_id');
+    console.log(matches.matches);
+    let data = []
+    for (i in matches.matches){
+        let name = await models.User.findOne({username: matches.matches[i]}, 'name -_id'); 
+        let image = await models.Questionnaire.findOne({username: matches.matches[i]}, 'image -_id');
+        let match = {name, image}
+        data.push(match);
+    }
 
-    res.json(loves.matches);
+    console.log(data);
+    res.json(data);
 }

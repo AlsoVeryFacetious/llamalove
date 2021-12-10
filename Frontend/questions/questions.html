@@ -22,7 +22,7 @@
 </head>
 <body>
     <main id="main" class="container">
-            <form id="survery-form">
+            <form id="survery-form" method='POST' action='http://localhost:3000/question' enctype='multipart/form-data'>
                 <div class="row">
                 <div id="form1">
                     <fieldset id="pronouns-fs" class="label-header">
@@ -66,7 +66,7 @@
                         What is your star sign?
                         <br>
                             <div class="radio">
-                                <select id="starsign-dropdown" name="starsign-dropdown" class="m-t-xs dropdowns" required>
+                                <select id="starsign-dropdown" name="sign" class="m-t-xs dropdowns" required>
                                     <option value="aries">Aries</option>
                                     <option value="taurus">Taurus</option>
                                     <option value="gemini">Gemini</option>
@@ -88,7 +88,7 @@
                         What degree are you in?
                         </div>
                         <div class="radio">
-                            <select id="degree-dropdown" name="degree-dropdown" class="m-t-xs dropdowns" required>
+                            <select id="degree-dropdown" name="degree" class="m-t-xs dropdowns" required>
                                 <option value="computerScience">Computer Science</option>
                                 <option value="gameDevelopment">Game Development</option>
                                 <option value="softwareEngineering">Software Engineering</option>
@@ -103,7 +103,7 @@
                             What cohort are you in?
                             </div>
                                 <div class="radio">
-                                    <select id="cohort-dropdown" name="cohort-dropdown" class="m-t-xs dropdowns" required>
+                                    <select id="cohort-dropdown" name="cohort" class="m-t-xs dropdowns" required>
                                         <option value="35">35</option>
                                         <option value="36">36</option>
                                         <option value="37">37</option>
@@ -118,12 +118,12 @@
                         What is your favorite genre of music?
                     </div>
                     <div class="radio">
-                        <input type="radio" id="rap/rb" name="genre" value="rap/rb" required>Rap/R&B
-                        <input type="radio" id="country" name="genre" value="country">Country
-                        <input type="radio" id="lofi" name="genre" value="lofi">Lofi
+                        <input type="radio" id="rap/rb" name="musicGenre" value="rap/rb" required>Rap/R&B
+                        <input type="radio" id="country" name="musicGenre" value="country">Country
+                        <input type="radio" id="lofi" name="musicGenre" value="lofi">Lofi
                         <br>
-                        <input type="radio" id="rock" name="genre" value="rock">Rock
-                        <input type="radio" id="house/edm" name="genre" value="house/edm">House/Edm
+                        <input type="radio" id="rock" name="musicGenre" value="rock">Rock
+                        <input type="radio" id="house/edm" name="musicGenre" value="house/edm">House/Edm
                     </div>
                 </fieldset>
                 <fieldset>
@@ -131,12 +131,12 @@
                         What is your favorite tv show genre?
                     </div>
                     <div class="radio">
-                        <input type="radio" id="anime" name="show" value="anime" required>Anime
-                        <input type="radio" id="comedy" name="show" value="comedy">Comedy                    
-                        <input type="radio" id="drama" name="show" value="drama">Drama
+                        <input type="radio" id="anime" name="tvGenre" value="anime" required>Anime
+                        <input type="radio" id="comedy" name="tvGenre" value="comedy">Comedy                    
+                        <input type="radio" id="drama" name="tvGenre" value="drama">Drama
                         <br>
-                        <input type="radio" id="action" name="show" value="action">Action
-                        <input type="radio" id="thriller" name="show" value="thriller">Thriller/Horror
+                        <input type="radio" id="action" name="tvGenre" value="action">Action
+                        <input type="radio" id="thriller" name="tvGenre" value="thriller">Thriller/Horror
                     </div>
                 </fieldset>
                 <fieldset>
@@ -144,13 +144,13 @@
                         What is your favorite type of game?
                     </div>
                     <div class="radio">
-                        <input type="radio" id="fps" name="game" value="fps" required>FPS
-                        <input type="radio" id="mmo" name="game" value="mmo">MMO
-                        <input type="radio" id="rpg" name="game" value="rpg">RPG
-                        <input type="radio" id="jrpg" name="game" value="jrpg">JRPG
+                        <input type="radio" id="fps" name="gameGenre" value="fps" required>FPS
+                        <input type="radio" id="mmo" name="gameGenre" value="mmo">MMO
+                        <input type="radio" id="rpg" name="gameGenre" value="rpg">RPG
+                        <input type="radio" id="jrpg" name="gameGenre" value="jrpg">JRPG
                         <br>
-                        <input type="radio" id="indie" name="game" value="indie">Indie
-                        <input type="radio" id="n/a" name="game" value="n/a">N/A
+                        <input type="radio" id="indie" name="gameGenre" value="indie">Indie
+                        <input type="radio" id="n/a" name="gameGenre" value="n/a">N/A
                     </div>
                 </fieldset>
                 <fieldset>
@@ -158,7 +158,7 @@
                         What is your favorite hobby?
                         </div>
                         <div class="radio">
-                            <select id="hobby-dropdown" name="hobby-dropdown" class="m-t-xs dropdowns" required>
+                            <select id="hobby-dropdown" name="hobbies" class="m-t-xs dropdowns" required>
                                 <option value="programming">Programming</option>
                                 <option value="gaming">Gaming</option>
                                 <option value="outdoorActivities">Outdoor Activities</option>
@@ -172,12 +172,12 @@
                         If you could travel any place where would it be?
                     </div>
                     <div class="radio">
-                        <input type="radio" id="europe" name="travel" value="europe" required>Europe
-                        <input type="radio" id="asia" name="travel" value="asia">Asia
-                        <input type="radio" id="africa" name="travel" value="africa">Africa
+                        <input type="radio" id="europe" name="travelDestination" value="europe" required>Europe
+                        <input type="radio" id="asia" name="travelDestination" value="asia">Asia
+                        <input type="radio" id="africa" name="travelDestination" value="africa">Africa
                         <br>
-                        <input type="radio" id="australia" name="travel" value="australia">australia
-                        <input type="radio" id="southAmerica" name="travel" value="southAmerica">South America
+                        <input type="radio" id="australia" name="travelDestination" value="australia">australia
+                        <input type="radio" id="southAmerica" name="travelDestination" value="southAmerica">South America
                     </div>
                 </fieldset>
                 
@@ -188,11 +188,15 @@
                         <div class="image" class="label-header">
                             Upload profile picture
                         </div>
+<<<<<<< HEAD
                         <input type='file' id='image_input' accept="image/jpeg" />
+=======
+                        <input type='file' id='image_input' accept="image/jpeg" name="image" />
                         
+>>>>>>> f5e38974014e575cf8689b42f5810f9e77fcb812
                         </fieldset>
                 <fieldset>
-                    <button id="submit" type="button" class="btn" onclick='submitQuestionnaire()'>Submit!</button>
+                    <button id="submit" type="submit" class="btn">Submit!</button>
                 </fieldset>
             </div>
             </form>
