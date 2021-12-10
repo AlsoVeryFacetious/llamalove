@@ -2,13 +2,8 @@ const models = require('../models');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const expressSession = require('express-session');
-<<<<<<< HEAD
-var fs = require('fs');
-var path = require('path');
-=======
 const fs = require('fs');
 const path = require('path');
->>>>>>> f5e38974014e575cf8689b42f5810f9e77fcb812
 
 const url = `mongodb+srv://zsalabye:xmasgift12@llamacluster.ug7af.mongodb.net/LlamaDB?retryWrites=true&w=majority`;
 
@@ -63,20 +58,12 @@ exports.createQuestionnaire = async (req, res) => {
     console.log(req.file.filename);
     const question = models.Questionnaire.create(req.body);
     question.username = req.session.user.username;
-<<<<<<< HEAD
-    question.image = {
-        data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-        contentType: 'image/jpg'
-    }
-    console.log(question)
-=======
     // console.log(question)
     // console.log(req.file);
     
     question.image.data = fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename));
     question.image.contentType = 'image/jpg';
     question.image.path = path.join(__dirname + '/uploads/' + req.file.filename)
->>>>>>> f5e38974014e575cf8689b42f5810f9e77fcb812
     try{
         // const question = await models.Questionnaire.create(req.body);
         await question.save()
