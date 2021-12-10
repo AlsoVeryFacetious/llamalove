@@ -53,5 +53,8 @@ app.post('/login', urlencodedParser, routes.login);
 app.get('/sendUser', checkAuth, routes.sendUser);
 app.get('/matches', checkAuth, routes.getMatches);
 app.post('/like', checkAuth, urlencodedParser, routes.like);
+app.get('/checkUsername/:username', routes.checkUsername);
+app.get('/getProfilePicture', routes.getProfilePicture);
+// app.get('/image/:filename', checkAuth, routes.getImage);
 
 app.listen(3000);

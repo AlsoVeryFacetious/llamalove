@@ -21,7 +21,18 @@ function getValues() {
 
 }
 
-
+let checkUsername = username =>{
+  console.log(username);
+  fetch("http://localhost:3000/checkUsername/"+username)
+  .then(res =>{
+    console.log(res)
+    if(res.status == 400){
+      return true;
+    } else {
+      return false;
+    }
+  })
+}
 
 var counter = 1;
         $(document).ready(function() {
@@ -81,6 +92,8 @@ var counter = 1;
                 errorMessage(erroEle, "It doesn't look like a " + focusInput.attr('name'), 'visible', 1);
               } else if (focusInput.attr('name') == 'phone' && !validatePhone(focusInput.val())) {
                 errorMessage(erroEle, "It doesn't look like a " + focusInput.attr('name'), 'visible', 1);
+              } else if (focusInput.attr('name') == 'username' && !checkUsername(focusInput.val())) {
+                errorMessage(erroEle, "Username taken.", 'visible', 1);
               } else {
 
                 if (type != 'navi') showLi(focusInput);
@@ -144,13 +157,9 @@ var counter = 1;
                 password: document.getElementById('password').value
             })
             }).then(res => {
-              if(res.status == 400){
-                console.log('username taken');
-              } else{
-                console.log("Request complete! response:", res);
-                sessionStorage.setItem('username', document.getElementById('uname').value)
-                window.location.replace("../questions/questions.html");
-              }
+              console.log("Request complete! response:", res);
+              sessionStorage.setItem('username', document.getElementById('uname').value)
+              window.location.replace("../questions/questions.html");
             });
           });
 // ///////////////////////////////////////////////////////////
