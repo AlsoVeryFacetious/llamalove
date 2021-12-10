@@ -41,6 +41,28 @@ let fetchMatches = () => {
         });
 }
 
+let fetchProfilePicture = () => {
+    fetch("http://localhost:3000/getProfilePicture", {
+        method: "GET",
+        credentials: 'include'
+    }).then(res => res.json())
+        .then(data => {
+            console.log(data);
+            displayProfilePicture(data);
+        });
+}
+
+let displayProfilePicture = data => {
+    let imgString = '';
+    try{
+        imgString = arrayBufferToBase64(data.image.data.data);
+        imgString = `data:image/jpg;base64,${imgString}`
+    } catch{
+        imgString = "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80";
+    }
+    document.getElementById('logo').src = imgString;
+}
+
 let displayMatches = data => {
     const matchBox = document.getElementById('matches');
     for (i in data) {
@@ -92,4 +114,5 @@ document.getElementById('dislikeButton').addEventListener('click', dislike);
 
 fetchData();
 fetchMatches();
+fetchProfilePicture();
 

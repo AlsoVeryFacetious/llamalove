@@ -24,7 +24,7 @@ mongoose.connect(url,connectionParams)
 exports.createUser = async (req, res) => {
     let salt = bcrypt.genSaltSync(10);
     console.log(req.body)
-    
+
     const user = models.User(req.body);
     user.password = bcrypt.hashSync(user.password, salt);
 
@@ -160,6 +160,11 @@ exports.checkUsername = async (req, res) => {
     } else{
         res.send();
     }
+}
+
+exports.getProfilePicture = async (req, res) => {
+    let image = await models.Questionnaire.findOne({username: req.session.user.username}, 'image -_id');
+    res.json(image);
 }
 
 exports.getMatches = async (req, res) => {
