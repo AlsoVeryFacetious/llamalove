@@ -1,3 +1,39 @@
+
+function submit() {
+  var name = document.getElementById("name").value;
+  console.log("Name: " + name)
+  var username = document.getElementById("uname").value;
+  console.log("Username: " + username)
+  var password = document.getElementById("password").value;
+  console.log("Password: " + password);
+
+}
+
+$(getValues);
+
+function getValues() {
+  var name = document.getElementById("name").value;
+  //console.log("Name: " + name)
+  var username = document.getElementById("uname").value;
+  //console.log("Username: " + username)
+  var password = document.getElementById("password").value;
+  console.log("Password: " + password);
+
+}
+
+let checkUsername = username =>{
+  console.log(username);
+  fetch("http://localhost:3000/checkUsername/"+username)
+  .then(res =>{
+    console.log(res)
+    if(res.status == 400){
+      return true;
+    } else {
+      return false;
+    }
+  })
+}
+
 var counter = 1;
         $(document).ready(function() {
 
@@ -56,6 +92,8 @@ var counter = 1;
                 errorMessage(erroEle, "It doesn't look like a " + focusInput.attr('name'), 'visible', 1);
               } else if (focusInput.attr('name') == 'phone' && !validatePhone(focusInput.val())) {
                 errorMessage(erroEle, "It doesn't look like a " + focusInput.attr('name'), 'visible', 1);
+              } else if (focusInput.attr('name') == 'username' && !checkUsername(focusInput.val())) {
+                errorMessage(erroEle, "Username taken.", 'visible', 1);
               } else {
 
                 if (type != 'navi') showLi(focusInput);
@@ -107,8 +145,24 @@ var counter = 1;
             }, 500).css({
               'display': 'block'
             });
+// Send data to database
+// ////////////////////////////////////////////////////////////////
+            fetch("http://localhost:3000/create", {
+              method: "POST",
+              headers: {'Content-Type': 'application/json'},
+              credentials: 'include',
+              body: JSON.stringify({
+                name: document.getElementById('name').value,
+                username: document.getElementById('uname').value,
+                password: document.getElementById('password').value
+            })
+            }).then(res => {
+              console.log("Request complete! response:", res);
+              sessionStorage.setItem('username', document.getElementById('uname').value)
+              window.location.replace("../questions/questions.html");
+            });
           });
-
+// ///////////////////////////////////////////////////////////
           $('#show-pwd').mousedown(function() {
             $(this).toggleClass('view').toggleClass('hide');
             $('#password').css('opacity', 0);

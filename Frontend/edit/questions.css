@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  background-color: #ffd583;
+}
+
+.topnav {
+  background-color: black;
+}
+
+#main {
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%);
+  display: flex;
+  display: inline-block;
+  outline: none;
+  font-weight: 500;
+  color: #000;
+  background: transparent;
+  font-size: 14px;
+  word-spacing: 0px;
+  letter-spacing: 0.0892857143em;
+  text-decoration: none;
+  text-transform: uppercase;
+  min-width: 64px;
+  text-align: center;
+  transition: background 280ms cubic-be;
+  padding-bottom: 10px;
+}
+
+#survery-form {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 100px;
+}
+
+.row {
+  display: flex;
+}
+
+fieldset {
+  border-style: none;
+  font-family: "Roboto";
+  text-align: center;
+}
+
+.label-header {
+  padding-top: 25px;
+}
+
+.radio {
+  padding-top: 10px;
+}
+
+.radio input {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.age, .newName, .newUserName {
+  display: inline-block;
+  outline: none;
+  font-weight: 500;
+  color: #000;
+  background: transparent;
+  font-size: 14px;
+  word-spacing: 0px;
+  letter-spacing: 0.0892857143em;
+  text-decoration: none;
+  text-transform: uppercase;
+  min-width: 64px;
+  transition: background 280ms cubic-be;
+  border: 1px solid #000;
+  width: 300px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.dropdowns {
+  display: inline-block;
+  outline: none;
+  font-weight: 500;
+  color: #000;
+  background: transparent;
+  font-size: 14px;
+  word-spacing: 0px;
+  letter-spacing: 0.0892857143em;
+  text-decoration: none;
+  text-transform: uppercase;
+  min-width: 64px;
+  text-align: center;
+  transition: background 280ms cubic-be;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 300px;
+}
+
+.dropdowns:hover {
+  background-color: transparent;
+}
+
+.dropdowns:menu {
+  background-color: transparent;
+}
+
+#form1 {
+  float: left;
+  padding-left: 100px;
+  padding-right: 50px;
+  padding-top: 20px;
+  
+}
+
+input[type='radio'] {
+  -webkit-appearance:none;
+  width:12px;
+  height:12px;
+  border:1px solid #000;
+  border-radius:50%;
+  outline:none;
+}
+
+input[type='radio']:before {
+  content:'';
+  display:block;
+  width:60%;
+  height:60%;
+  margin: 20% auto;    
+  border-radius:60%;    
+}
+
+input[type='radio']:checked:before {
+  background: black;
+}
+
+#form2 {
+  padding-top: 40px;
+  float: right;
+  padding-right: 100px;
+  padding-left: 50px;
+  padding-bottom: 20px;
+}
+
+#form1 {
+  padding-top: 50px;
+  float: right;
+  padding-right: 50px;
+  padding-left: 100px;
+  padding-bottom: 20px;
+}
+
+.btn {
+  margin-top: 10px;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 3px;
+  padding: 0 15px;
+  border-radius: 4px;
+  color: #000;
+  background: transparent;
+  line-height: 1.15;
+  font-size: 14px;
+  height: 36px;
+  word-spacing: 0px;
+  letter-spacing: 0.0892857143em;
+  text-decoration: none;
+  text-transform: uppercase;
+  min-width: 64px;
+  border: 1px solid #000;
+  text-align: center;
+  transition: background 280ms cubic-be;
+}
+
+.btn:hover {
+  background: #f4f4f4;
+}
+
+#form3 {
+  padding-bottom: 20px;
+}

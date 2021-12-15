@@ -1,3 +1,73 @@
+/* /* 
+  navbar
+*/
+
+/* @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
+.navbarul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.linka {
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  color: #dadde7;
+  font-size: 20px;
+}
+
+
+.linkli {
+  float: right;
+  list-style-type: none;
+}
+
+
+.linka:hover {
+  color:#FFC759;
+}
+
+.header_navbar {
+  padding: 0 0;
+  position: sticky;
+  height: 150px;
+}
+
+#pageHeader {
+  width: 100%;
+  display: inline-flex;
+}
+
+.navbar {
+  position: sticky;
+  float:left;
+  position: relative;
+  left: 50%;
+}
+
+.logoHeader {
+  width: 150px;
+  height: 150px;
+  float: left;
+}
+
+.titleHeader {
+  font-family: 'Sacramento', sans-serif;
+  font-size: 50px;
+  width: 100%;
+  padding-top: 35px;
+  color:#dadde7;
+} */ 
+
+/*
+
+*/
+
+
 * {
   margin: 0;
   padding: 0;
@@ -6,11 +76,6 @@
 *:after,
 *:before {
   box-sizing: border-box;
-}
-
-#createTitle {
-  margin-top: 50px;
-  font-size: 30px;
 }
 
 body {
@@ -26,8 +91,7 @@ body {
   color: #6a79a6;
   display: inline-block;
   padding: 0em 2em;
-  margin-top: 4em auto;
-  
+  margin: 4em auto;
   box-shadow: 0 50px 50px rgba(0, 0, 0, 0.2);
 }
 .container .navigation {

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./questions.css">
+<link rel="stylesheet" href="./navbar.css">
+<header>
+    <div class="topnav">
+        <div class="topnav-centeredTitle">
+            <p class="title">llamaluv</p>
+        </div>
+        <img class="logo" src="..\shit\white-logo.png">
+        <div class="topnav-right">
+            <a href="">Home</a>
+            <a href="#">Log In</a>
+        </div>
+    </div>
+</header>
+<br>
+<br>
+</head>
+<body>
+    <main id="main" class="container">
+            <form id="survery-form">
+                <div class="row">
+                <div id="form1">
+                    <fieldset>
+                        <label for="newName" id="newName-label" class="label-header">
+                        what is your name?
+                            <br>
+                            <div class="radio">
+                                <input class="newName" type="newName" id="NewName" name="newName" min="8" max="112" required />
+                            </div>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <label for="newUserName" id="newUserName-label" class="label-header">
+                        what shall we call you?
+                            <br>
+                            <div class="radio">
+                                <input class="newUserName" type="newUserName" id="NewUserName" name="newUserName" min="8" max="112" required />
+                            </div>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <button class="btn">Change Password</button>
+                    </fieldset>
+                    <fieldset id="pronouns-fs" class="label-header">
+                        <label for="pronouns" id="pronouns-label">
+                        What are your pronouns?
+                            <br>
+                            <div class="radio">
+                                <input type="radio" id="pronounsHe" name="pronouns" value="he/him" required>
+                                <label for="pronounsHe" class="pronounsHe">He/Him</label>
+                                <br>
+                                <input type="radio" id="pronounsShe" name="pronouns" value="she/her">
+                                <label for="pronounsShe" class="pronounsShe">She/Her</label>
+                                <br>
+                                <input type="radio" id="pronounsThey" name="pronouns" value="they/them">
+                                <label for="pronounsThey" class="pronounsThey">They/Them</label>
+                            </div>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <label for="attracted" id="attracted-label" class="label-header">
+                        Who are you attracted to?
+                            <br>
+                            <div class="radio">
+                                <input type="radio" id="women" name="attracted" value="women" required>Women
+                                <input type="radio" id="men" name="attracted" value="men">Men
+                                <input type="radio" id="both" name="attracted" value="both">Both
+                            </div>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <label for="age" id="age-label" class="label-header">
+                        How old are you?
+                            <br>
+                            <div class="radio">
+                                <input class="age" type="age" id="age" name="age" min="8" max="112" required />
+                            </div>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <label for="starsign-dropdown" class="label-header">
+                        What is your star sign?
+                        <br>
+                            <div class="radio">
+                                <select id="starsign-dropdown" name="starsign-dropdown" class="m-t-xs dropdowns" required>
+                                    <option value="aries">Aries</option>
+                                    <option value="taurus">Taurus</option>
+                                    <option value="gemini">Gemini</option>
+                                    <option value="cancer">Cancer</option>
+                                    <option value="leo">Leo</option>
+                                    <option value="virgo">Virgo</option>
+                                    <option value="libra">Libra</option>
+                                    <option value="scorpio">Scorpio</option>
+                                    <option value="sagittarius">Sagittarius</option>
+                                    <option value="capricorn">Capricorn</option>
+                                    <option value="aquarius">Aquarius</option>
+                                    <option value="pisces">Pisces</option>
+                                </select>
+                            </div>
+                        </label>
+                    </fieldset>
+                        
+                </div> <!-- FORM 1 ENDING-->
+                <div id="form2">
+                    <!-- FORM 2 STARTING-->
+                    <fieldset>
+                        <div class="degree" class="label-header">
+                        What degree are you in?
+                        </div>
+                        <div class="radio">
+                            <select id="degree-dropdown" name="degree-dropdown" class="m-t-xs dropdowns" required>
+                                <option value="computerScience">Computer Science</option>
+                                <option value="gameDevelopment">Game Development</option>
+                                <option value="softwareEngineering">Software Engineering</option>
+                                <option value="webDevelopment">Web Development</option>
+                                <option value="informationSystems">Information Systems</option>
+                                <option value="bsm">Business Tech. Management</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="cohort" class="label-header">
+                            What cohort are you in?
+                            </div>
+                                <div class="radio">
+                                    <select id="cohort-dropdown" name="cohort-dropdown" class="m-t-xs dropdowns" required>
+                                        <option value="35">35</option>
+                                        <option value="36">36</option>
+                                        <option value="37">37</option>
+                                    </select>
+                                </div>
+                    </fieldset>
+                    <div class="favGenre" class="label-header">
+                        What is your favorite genre of music?
+                    </div>
+                    <div class="radio">
+                        <input type="radio" id="rap/rb" name="genre" value="rap/rb" required>Rap/R&B
+                        <input type="radio" id="country" name="genre" value="country">Country
+                        <input type="radio" id="lofi" name="genre" value="lofi">Lofi
+                        <br>
+                        <input type="radio" id="rock" name="genre" value="rock">Rock
+                        <input type="radio" id="house/edm" name="genre" value="house/edm">House/Edm
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="favTvShow" class="label-header">
+                        What is your favorite tv show genre?
+                    </div>
+                    <div class="radio">
+                        <input type="radio" id="anime" name="show" value="anime" required>Anime
+                        <input type="radio" id="comedy" name="show" value="comedy">Comedy                    
+                        <input type="radio" id="drama" name="show" value="drama">Drama
+                        <br>
+                        <input type="radio" id="action" name="show" value="action">Action
+                        <input type="radio" id="thriller" name="show" value="thriller">Thriller/Horror
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="favGame" class="label-header">
+                        What is your favorite type of game?
+                    </div>
+                    <div class="radio">
+                        <input type="radio" id="fps" name="game" value="fps" required>FPS
+                        <input type="radio" id="mmo" name="game" value="mmo">MMO
+                        <input type="radio" id="rpg" name="game" value="rpg">RPG
+                        <input type="radio" id="jrpg" name="game" value="jrpg">JRPG
+                        <br>
+                        <input type="radio" id="indie" name="game" value="indie">Indie
+                        <input type="radio" id="n/a" name="game" value="n/a">N/A
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="favHobby" class="label-header">
+                        What is your favorite hobby?
+                        </div>
+                        <div class="radio">
+                            <select id="hobby-dropdown" name="hobby-dropdown" class="m-t-xs dropdowns" required>
+                                <option value="programming">Programming</option>
+                                <option value="gaming">Gaming</option>
+                                <option value="outdoorActivities">Outdoor Activities</option>
+                                <option value="cooking">Cooking</option>
+                                <option value="photography">Photography</option>
+                            </select>
+                        </div>
+                </fieldset>
+                <fieldset>
+                    <div class="travelDest" class="label-header">
+                        If you could travel any place where would it be?
+                    </div>
+                    <div class="radio">
+                        <input type="radio" id="europe" name="travel" value="europe" required>Europe
+                        <input type="radio" id="asia" name="travel" value="asia">Asia
+                        <input type="radio" id="africa" name="travel" value="africa">Africa
+                        <br>
+                        <input type="radio" id="australia" name="travel" value="australia">australia
+                        <input type="radio" id="southAmerica" name="travel" value="southAmerica">South America
+                    </div>
+                </fieldset>
+                </div> <!-- FORM 2 ENDING-->
+            </div>
+                <div id="form3"> <!-- FORM 3 STARTING-->
+                <fieldset>
+                    <button id="submit" type="submit" class="btn">Submit!</button>
+                </fieldset>
+            </div>
+            </form>
+    </main>
+</body>
+</html>
